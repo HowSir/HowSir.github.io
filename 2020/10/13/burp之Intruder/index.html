@@ -5,17 +5,17 @@
   
 
   
-  <title>burp之spider | 一只菜鸟的博客</title>
+  <title>burp之Intruder | 一只菜鸟的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="BurpSuite spider功能(爬取网站页面)Control在Control界面可以启动爬虫功能、查看爬虫状态、设置爬虫范围。 Options对爬虫进行设置，包含以下内容： 爬取设置 被动爬取 登录表单 爬虫引擎 请求头部 爬虫执行右击发送到spider 在Target界面右击url条目，然后点击Spider from here 爬虫爬取结果显示在Target界面。">
+  <meta name="description" content="使用Intruder1.将要进行测试的请求发送到Intruder选项卡 2.选择要测试的位置，配置有效载荷 3.开始测试 Intruder选项卡Target：目标服务器站点、端口、SSL连接是否启用。 Positions：指定Request发包前要修改的参数位置，及字典如何填充到参数中。 Payloads：指定‘字典’，及每一次取出字典时，是否要进一步编码字典等。 Options：发包（收包）细节">
 <meta property="og:type" content="article">
-<meta property="og:title" content="burp之spider">
-<meta property="og:url" content="http://example.com/2020/10/09/burp%E4%B9%8Bspider/index.html">
+<meta property="og:title" content="burp之Intruder">
+<meta property="og:url" content="http://example.com/2020/10/13/burp%E4%B9%8BIntruder/index.html">
 <meta property="og:site_name" content="一只菜鸟的博客">
-<meta property="og:description" content="BurpSuite spider功能(爬取网站页面)Control在Control界面可以启动爬虫功能、查看爬虫状态、设置爬虫范围。 Options对爬虫进行设置，包含以下内容： 爬取设置 被动爬取 登录表单 爬虫引擎 请求头部 爬虫执行右击发送到spider 在Target界面右击url条目，然后点击Spider from here 爬虫爬取结果显示在Target界面。">
+<meta property="og:description" content="使用Intruder1.将要进行测试的请求发送到Intruder选项卡 2.选择要测试的位置，配置有效载荷 3.开始测试 Intruder选项卡Target：目标服务器站点、端口、SSL连接是否启用。 Positions：指定Request发包前要修改的参数位置，及字典如何填充到参数中。 Payloads：指定‘字典’，及每一次取出字典时，是否要进一步编码字典等。 Options：发包（收包）细节">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-09T14:27:07.000Z">
-<meta property="article:modified_time" content="2020-10-09T14:49:20.275Z">
+<meta property="article:published_time" content="2020-10-13T12:52:54.000Z">
+<meta property="article:modified_time" content="2020-10-13T13:13:14.176Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -66,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-burp之spider" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-burp之Intruder" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/10/09/burp%E4%B9%8Bspider/" class="article-date">
-  <time datetime="2020-10-09T14:27:07.000Z" itemprop="datePublished">2020-10-09</time>
+    <a href="/2020/10/13/burp%E4%B9%8BIntruder/" class="article-date">
+  <time datetime="2020-10-13T12:52:54.000Z" itemprop="datePublished">2020-10-13</time>
 </a>
     
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      burp之spider
+      burp之Intruder
     </h1>
   
 
@@ -88,21 +88,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="BurpSuite-spider功能-爬取网站页面"><a href="#BurpSuite-spider功能-爬取网站页面" class="headerlink" title="BurpSuite spider功能(爬取网站页面)"></a>BurpSuite spider功能(爬取网站页面)</h1><h2 id="Control"><a href="#Control" class="headerlink" title="Control"></a>Control</h2><pre><code>在Control界面可以启动爬虫功能、查看爬虫状态、设置爬虫范围。</code></pre>
-<h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><pre><code>对爬虫进行设置，包含以下内容：
-爬取设置
-被动爬取
-登录表单
-爬虫引擎
-请求头部</code></pre>
-<h2 id="爬虫执行"><a href="#爬虫执行" class="headerlink" title="爬虫执行"></a>爬虫执行</h2><pre><code>右击发送到spider
-在Target界面右击url条目，然后点击Spider from here
-爬虫爬取结果显示在Target界面。</code></pre>
+        <h1 id="使用Intruder"><a href="#使用Intruder" class="headerlink" title="使用Intruder"></a>使用Intruder</h1><pre><code>1.将要进行测试的请求发送到Intruder选项卡
+2.选择要测试的位置，配置有效载荷
+3.开始测试</code></pre>
+<h1 id="Intruder选项卡"><a href="#Intruder选项卡" class="headerlink" title="Intruder选项卡"></a>Intruder选项卡</h1><pre><code>Target：目标服务器站点、端口、SSL连接是否启用。
+Positions：指定Request发包前要修改的参数位置，及字典如何填充到参数中。
+Payloads：指定‘字典’，及每一次取出字典时，是否要进一步编码字典等。
+Options：发包（收包）细节，发包速度，发包记录是否保存，每一次发包后是否要更新请求头、是否主动声明请求连接已关闭、收包时匹配到哪些数据要记录等。</code></pre>
+<h2 id="Positions"><a href="#Positions" class="headerlink" title="Positions"></a>Positions</h2><pre><code>Sniper：一次对一个测试的位置用字典进行替换
+Battering ram：一次对多个位置使用同个字典进行替换
+Pitchfork：对每个位置分别设置字典，假如有两个位置，则设置两个字典
+ 111    111
+ 222    222
+ 333    333
+测试结果为
+ 111    111
+ 222    222
+ 333    333
+
+Cluster bomb：对每个位置分别设置字典，假如有两个位置，则设置两个字典
+ 111    111
+ 222    222
+ 333    333
+测试结果为
+ 111    111
+ 222    111
+ 333    111
+ 111    222
+ 222    222
+ 333    222
+ 111    333
+ 222    333
+ 333    333</code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/09/burp%E4%B9%8Bspider/" data-id="ckg2d8zqw0000igtwfyewdni5" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/13/burp%E4%B9%8BIntruder/" data-id="ckg7zlik30000cktw1p6baas9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -111,19 +133,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/10/13/burp%E4%B9%8BScanner/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          burp之Scanner
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/09/27/burp%E4%B9%8BProxy/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/10/13/burp%E4%B9%8BScanner/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">burp之Proxy</div>
+      <div class="article-nav-title">burp之Scanner</div>
     </a>
   
 </nav>

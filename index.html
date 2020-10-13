@@ -64,6 +64,118 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-burp之Intruder" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/13/burp%E4%B9%8BIntruder/" class="article-date">
+  <time datetime="2020-10-13T12:52:54.000Z" itemprop="datePublished">2020-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/13/burp%E4%B9%8BIntruder/">burp之Intruder</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用Intruder"><a href="#使用Intruder" class="headerlink" title="使用Intruder"></a>使用Intruder</h1><pre><code>1.将要进行测试的请求发送到Intruder选项卡
+2.选择要测试的位置，配置有效载荷
+3.开始测试</code></pre>
+<h1 id="Intruder选项卡"><a href="#Intruder选项卡" class="headerlink" title="Intruder选项卡"></a>Intruder选项卡</h1><pre><code>Target：目标服务器站点、端口、SSL连接是否启用。
+Positions：指定Request发包前要修改的参数位置，及字典如何填充到参数中。
+Payloads：指定‘字典’，及每一次取出字典时，是否要进一步编码字典等。
+Options：发包（收包）细节，发包速度，发包记录是否保存，每一次发包后是否要更新请求头、是否主动声明请求连接已关闭、收包时匹配到哪些数据要记录等。</code></pre>
+<h2 id="Positions"><a href="#Positions" class="headerlink" title="Positions"></a>Positions</h2><pre><code>Sniper：一次对一个测试的位置用字典进行替换
+Battering ram：一次对多个位置使用同个字典进行替换
+Pitchfork：对每个位置分别设置字典，假如有两个位置，则设置两个字典
+ 111    111
+ 222    222
+ 333    333
+测试结果为
+ 111    111
+ 222    222
+ 333    333
+
+Cluster bomb：对每个位置分别设置字典，假如有两个位置，则设置两个字典
+ 111    111
+ 222    222
+ 333    333
+测试结果为
+ 111    111
+ 222    111
+ 333    111
+ 111    222
+ 222    222
+ 333    222
+ 111    333
+ 222    333
+ 333    333</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/13/burp%E4%B9%8BIntruder/" data-id="ckg7zlik30000cktw1p6baas9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-burp之Scanner" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/13/burp%E4%B9%8BScanner/" class="article-date">
+  <time datetime="2020-10-13T12:30:01.000Z" itemprop="datePublished">2020-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/13/burp%E4%B9%8BScanner/">burp之Scanner</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用Scanner"><a href="#使用Scanner" class="headerlink" title="使用Scanner"></a>使用Scanner</h1><pre><code>1.先用spider爬取网站
+2.在Target下的Site map中右击url，在菜单中选择主动扫描。在向导界面移除不需要的item
+3.在Scanner选项卡下查看扫描出的结果。</code></pre>
+<h1 id="Scanner界面"><a href="#Scanner界面" class="headerlink" title="Scanner界面"></a>Scanner界面</h1><pre><code>Issue activity:扫描出的有问题的item
+Scan queue:扫描队列，显示扫描队里的状态，进度，结果等。
+Live scanning:不管它
+Issue Definitions:漏洞列表，列出了burp可以扫描到的漏洞详情。
+Options：包含Burp扫描选项进行攻击的插入点，主动扫描引擎，主动扫描优化，主动扫描区的被动扫描区域。</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/13/burp%E4%B9%8BScanner/" data-id="ckg7zlik70001cktw8x2ng2ch" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-burp之spider" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/09/burp%E4%B9%8Bspider/" class="article-date">
@@ -251,6 +363,14 @@ hexo d 部署</code></pre>
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/10/13/burp%E4%B9%8BIntruder/">burp之Intruder</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/13/burp%E4%B9%8BScanner/">burp之Scanner</a>
+          </li>
         
           <li>
             <a href="/2020/10/09/burp%E4%B9%8Bspider/">burp之spider</a>
