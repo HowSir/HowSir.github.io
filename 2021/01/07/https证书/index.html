@@ -7,16 +7,16 @@
   
   <title>https证书 | 一只菜鸟的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#HTTPS 由于工作需要用到HTTPS协议，就去网上找了一下资料。略有心得，在此做个笔记，防止遗忘。 关于HTTPS的资料网上有很多，简单来说就是HTTP+SSL证书。客户端在和服务器通信前会检查服务器的ssl证书。ssl证书不可篡改，因此只要ssl证书合法，通信便是可靠的。  ##SSL证书原理 下面稍微讲解一下SSL证书。首先，客户端怎么确定正在访问的网站是安全的网站?比如说怎么判断439">
+  <meta name="description" content="HTTPS&amp;ensp;&amp;ensp;由于工作需要用到HTTPS协议，就去网上找了一下资料。略有心得，在此做个笔记，防止遗忘。&amp;ensp;&amp;ensp;关于HTTPS的资料网上有很多，简单来说就是HTTP+SSL证书。客户端在和服务器通信前会检查服务器的ssl证书。ssl证书不可篡改，因此只要ssl证书合法，通信便是可靠的。 SSL证书原理&amp;ensp;&amp;ensp;下面稍微讲解一下SSL证书。首先，客户端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="https证书">
 <meta property="og:url" content="http://example.com/2021/01/07/https%E8%AF%81%E4%B9%A6/index.html">
 <meta property="og:site_name" content="一只菜鸟的博客">
-<meta property="og:description" content="#HTTPS 由于工作需要用到HTTPS协议，就去网上找了一下资料。略有心得，在此做个笔记，防止遗忘。 关于HTTPS的资料网上有很多，简单来说就是HTTP+SSL证书。客户端在和服务器通信前会检查服务器的ssl证书。ssl证书不可篡改，因此只要ssl证书合法，通信便是可靠的。  ##SSL证书原理 下面稍微讲解一下SSL证书。首先，客户端怎么确定正在访问的网站是安全的网站?比如说怎么判断439">
+<meta property="og:description" content="HTTPS&amp;ensp;&amp;ensp;由于工作需要用到HTTPS协议，就去网上找了一下资料。略有心得，在此做个笔记，防止遗忘。&amp;ensp;&amp;ensp;关于HTTPS的资料网上有很多，简单来说就是HTTP+SSL证书。客户端在和服务器通信前会检查服务器的ssl证书。ssl证书不可篡改，因此只要ssl证书合法，通信便是可靠的。 SSL证书原理&amp;ensp;&amp;ensp;下面稍微讲解一下SSL证书。首先，客户端">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/4399.png">
 <meta property="article:published_time" content="2021-01-07T11:39:00.000Z">
-<meta property="article:modified_time" content="2021-01-07T13:15:05.279Z">
+<meta property="article:modified_time" content="2021-01-07T13:19:45.910Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/4399.png">
@@ -90,16 +90,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> #HTTPS</p>
-<p>由于工作需要用到HTTPS协议，就去网上找了一下资料。略有心得，在此做个笔记，防止遗忘。</p>
-<p>关于HTTPS的资料网上有很多，简单来说就是HTTP+SSL证书。客户端在和服务器通信前会检查服务器的ssl证书。ssl证书不可篡改，因此只要ssl证书合法，通信便是可靠的。</p>
-<p> ##SSL证书原理</p>
-<p>下面稍微讲解一下SSL证书。首先，客户端怎么确定正在访问的网站是安全的网站?比如说怎么判断4399这个网站是否是安全的。</p>
-<p>最简单的办法，在百度上搜一下4399，发现是一个正规网站，然后在电脑上建立一个文件，告诉电脑4399是一个安全的网站。显然这个方法是不可行的，如果在访问每个网站前都得考察一下的话，相信很多人会放弃上网。</p>
-<p>还有一种办法是引入一个可信的第三方机构，由第三方机构去考察这些网站，第三方机构为每一个安全的网站颁发“合格证明”——SSL证书。然后这些安全的网站将“合格证明”放在服务器上，客户端只要发现服务器上有SSL证书，说明该网站是安全的。</p>
-<p>下面是我访问4399的截图，显然4399并没有ssl证书<br><img src="/4399.png" alt="Alt text"></p>
-<p> ##SSL证书</p>
-<p>SSL是由SSL根证书颁发机构——也就是上文中的第三方机构，这样的机构有很多——颁发给网站的。颁发机构也有一个根证书，颁发机构用它的根证书为合法的网站生成一个ssl证书。同时，客户端的浏览器中也存着颁发机构的根证书，当然，客户端中的根证书与颁发机构生成ssl证书的根证书不一样。客户端中的根证书可以识别由颁发机构的根证书生成的ssl证书。</p>
+        <h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><p>&ensp;&ensp;由于工作需要用到HTTPS协议，就去网上找了一下资料。略有心得，在此做个笔记，防止遗忘。<br/><br>&ensp;&ensp;关于HTTPS的资料网上有很多，简单来说就是HTTP+SSL证书。客户端在和服务器通信前会检查服务器的ssl证书。ssl证书不可篡改，因此只要ssl证书合法，通信便是可靠的。</p>
+<h2 id="SSL证书原理"><a href="#SSL证书原理" class="headerlink" title="SSL证书原理"></a>SSL证书原理</h2><p>&ensp;&ensp;下面稍微讲解一下SSL证书。首先，客户端怎么确定正在访问的网站是安全的网站?比如说怎么判断4399这个网站是否是安全的。<br/><br>&ensp;&ensp;最简单的办法，在百度上搜一下4399，发现是一个正规网站，然后在电脑上建立一个文件，告诉电脑4399是一个安全的网站。显然这个方法是不可行的，如果在访问每个网站前都得考察一下的话，相信很多人会放弃上网。<br/><br>&ensp;&ensp;还有一种办法是引入一个可信的第三方机构，由第三方机构去考察这些网站，第三方机构为每一个安全的网站颁发“合格证明”——SSL证书。然后这些安全的网站将“合格证明”放在服务器上，客户端只要发现服务器上有SSL证书，说明该网站是安全的。</p>
+<p>&ensp;&ensp;下面是我访问4399的截图，显然4399并没有ssl证书<br/><br><img src="/4399.png" alt="Alt text"></p>
+<h2 id="SSL证书"><a href="#SSL证书" class="headerlink" title="SSL证书"></a>SSL证书</h2><p>&ensp;&ensp;SSL是由SSL根证书颁发机构——也就是上文中的第三方机构，这样的机构有很多——颁发给网站的。颁发机构也有一个根证书，颁发机构用它的根证书为合法的网站生成一个ssl证书。同时，客户端的浏览器中也存着颁发机构的根证书，当然，客户端中的根证书与颁发机构生成ssl证书的根证书不一样。客户端中的根证书可以识别由颁发机构的根证书生成的ssl证书。</p>
 
       
     </div>
